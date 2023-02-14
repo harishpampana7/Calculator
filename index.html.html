@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calculator</title>
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 60px;
+        color: teal;
+        margin: auto;
+        
+      }
+      #container {
+        height: 450px;
+        width: 400px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        margin: auto;
+        margin-top: 40px;
+        border-radius: 10px;
+        padding: 50px;
+        
+      }
+      #display {
+        height: 15%;
+        width: 90%;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        margin: auto;
+        color: black;
+      }
+      #keyboard {
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 80px);
+        gap: 10px;
+        margin-top: 20px;
+        /* margin-bottom: 20px; */
+      }
+
+      #keyboard > div {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        border-radius: 15%;
+        justify-content: center;
+        align-items: center;
+        display: grid;
+        font-size: 25px;
+        font-weight: bold;
+        
+      }
+
+      #keyboard > div:hover {
+        background-color: teal;
+        cursor: pointer;
+      }
+
+      .black {
+        background-color: black;
+        color: white;
+      }
+
+      .red {
+        background-color: red;
+        color: white;
+      }
+
+      #display {
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mr.Lucifer</h1>
+    <div id="container">
+        <div id="display"></div>
+        <div id="keyboard">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div class="black">+</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div class="black">-</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div class="black">*</div>
+            <div class="red">C</div>
+            <div>0</div>
+            <div class="black">=</div>
+            <div class="black">/</div>
+        </div>
+    </div>
+  </body>
+</html>
+
+<script>
+    let keys = document.querySelectorAll("#keyboard>div");
+    let bag="";
+    keys.forEach(function(ele){
+        ele.addEventListener("click",mycal);
+    });
+
+    function mycal(event){
+        let targetNumber=event.target.innerText;
+        if(targetNumber == "C"){
+            document.querySelector("#display").innerText = ""
+            bag=""
+        }
+        else if(targetNumber=="="){
+            document.getElementById("display").innerText=eval(bag);
+            bag=""
+        }
+        else{
+            bag= bag+targetNumber;
+        document.getElementById("display").innerText=bag;
+        }
+        
+    }
+</script>
